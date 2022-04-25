@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main id="barba-wrapper">
+    <div class="barba-container" data-namespace="underlayer">
+        <div class="page-top">
+            <div class="section">
+                <div class="fullpage__slide">
+                    <div class="title">
+                        <h2 class="title__text js-letter">Get In Touch</h2>
+                        <div class="border js-letter"><span></span><span class="js-letter"></span></div>
+                        <ul>
+                            <li class="js-letter"><a href="mailto:{{about.email}}">{{about.email}}</a></li>
+                            <li class="js-letter"><a href="{{about.instagram}}" target="_blank">Instagram</a>
+                            </li>
+                            <li class="js-letter">
+
+                                <a href="{{about.behance}}" target="_blank">
+                                    <i class="fab fa-behance-square"></i></a>
+                                <a href="{{about.dribble}}" target="_blank">
+                                    <i class="fab fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="image image--contact">
+                        <div class="image__over">
+                            <div class="image__cover"></div>
+                            <div class="image__cover"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

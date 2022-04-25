@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main id="barba-wrapper">
+  <div class="barba-container" data-namespace="underlayer">
+    <div class="page-top">
+      <div class="page-top__inner"><a class="back-arrow" href="{% url 'home' %}"><svg xmlns="http://www.w3.org/2000/svg"
+            width="100%" height="34" viewBox="0 0 67 34">
+            <g fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" transform="translate(2 1)">
+              <path stroke-width="2" d="M0,15.5533333 L64,15.5533333" />
+              <polyline stroke-width="2" points="15.556 0 0 15.556 15.556 31.111" />
+            </g>
+          </svg></a>
+        <p class="scrollDown">SCROLLDOWN</p>
+        <div class="title">
+          <h2 class="title__text">About Me</h2>
+          <div class="border js-toRight"><span></span><span></span></div>
+          <p class="title__lead about-desc">{{about.intro | safe}}</p>
+          <div class="btn-wrap"><a class="btn" href="#more">View More</a>
+          </div>
+        </div>
+        <div class="image image__about"></div>
+      </div>
+    </div>
+    <section class="wrapper" id="more">
+      <div class="who container">
+        <div class="text text--top">
+          <p class="heading-num">01</p>
+          <div class="text__wrap text__wrap--top content">
+            <h2 class="heading heading--top">WHO I AM</h2>
+            <div class="who__wrap">
+              <div class="who__name">
+                <h3 class="who__jp">Designer</h3>
+                <p class="who__en">{{about.name}}</p>
+              </div>
+              <p class="who__text">
+                {{about.description | safe}}
+              </p>
+              <div class="who__image"><img src="{{about.image}}" alt="{{about.name}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="passion container">
+        <div class="text">
+          <p class="heading-num">02</p>
+          <div class="text__wrap content">
+            <h2 class="heading">PASSION</h2>
+          </div>
+        </div>
+        <div class="content content--mlarge">
+          <ul class="passion__list">
+            <li class="passion__item">
+              <div class="passion__image"><img src="{% static 'img/design-skills.svg' %}" alt="design"></div>
+              <h3 class="sub-title">DESIGN</h3>
+              <p class="passion__text">
+                My love for design sprouted by unending imaginations of how fellow designers' graphic contents could
+                look better than they actually did in real life. At times I spend hours on Pinterest consuming design
+                content from fellow designers and commenting on one or two things portrayed in their designs. To me,
+                design is not only my bread but also a satisfying realm.
+              </p>
+            </li>
+            <li class="passion__item">
+              <div class="passion__image"><img src="{% static 'img/tech.svg' %}" alt="TECHNOLOGY"></div>
+              <h3 class="sub-title">TECHNOLOGY</h3>
+              <p class="passion__text">
+                As a designer, flowing with tech is a necessity. Tech is my skill sharpener and that is why I love it.
+                Designing with some tech guidelines sells my capability and enables me to earn some social approval.
+                Tech-related designs have some authority over ordinary designs for their psychological ingredients that
+                keep viewers glued. The world is turning smart and that's the reason I not only love but work with tech.
+              </p>
+            </li>
+            <li class="passion__item">
+              <div class="passion__image"><img src="{% static 'img/book-open.svg' %}" alt="STORY"></div>
+              <h3 class="sub-title">STORY</h3>
+              <p class="passion__text">
+                Story helps me communicate my inner thoughts, worries, ideas, and passion. From telling a story I learn
+                a lot from what others think of me and my work. From the UX principle of "a design is 90% better of when
+                tested" telling a story is key in self-testing as it brings some commonality and differences on board.
+                Story is a source of constructive feedback and new ideas.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="skill-set container">
+        <div class="text">
+          <p class="heading-num">03</p>
+          <div class="text__wrap content">
+            <h2 class="heading">SKILL SET</h2>
+          </div>
+        </div>
+        <div class="content content--mlarge skill-set__flex">
+          <ul class="skill-set__list">
+            {% for skill in skills|slice:":4" %}
+            <li class="skill-set__item">
+              <div class="skill-set__icon"><img src="{{skill.icon}}" alt="Illustrator"></div>
+              <div class="skill-set__detail">
+                <div class="skill-set__meta">
+                  <div class="skill-set__name">
+                    <h4 class="small-title small-title--skill">{{skill.title}}</h4>
+                    <p class="skill-set__year">{{skill.years}} Years</p>
+                  </div>
+                  <p class="small-title small-title--skill skill-set__high">{{skill.percentage}}<span
+                      class="skill-set__ratio">%</span>
+                  </p>
+                </div>
+                <div class="skill-set__bar p{{skill.percentage}} js-scroll in"></div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          <ul class="skill-set__list">
+            {% for skill in skills|slice:"4:" %}
+            <li class="skill-set__item">
+              <div class="skill-set__icon"><img src="{{skill.icon}}" alt="{{skill.title}}"></div>
+              <div class="skill-set__detail">
+                <div class="skill-set__meta">
+                  <div class="skill-set__name">
+                    <h4 class="small-title small-title--skill">{{skill.title}}</h4>
+                    <p class="skill-set__year">{{skill.years}} Years</p>
+                  </div>
+                  <p class="small-title small-title--skill skill-set__high">{{skill.percentage}}<span
+                      class="skill-set__ratio">%</span>
+                  </p>
+                </div>
+                <div class="skill-set__bar p{{skill.percentage}} js-scroll in"></div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <a href="mailto:{{about.email}}">{{about.email}}</a>
+      <a href="{{about.instagram}}" target="_blank">Instagram</a>
+    </footer>
+  </div>
+</main>
+
+{% endblock %}

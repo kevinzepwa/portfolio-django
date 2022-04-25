@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main id="barba-wrapper">
+    <div class="barba-container" data-namespace="underlayer">
+        <div class="page-top">
+            <div class="page-top__inner">
+                <p class="scrollDown">SCROLLDOWN</p>
+                <div class="title">
+                    <h2 class="title__text">My Featured <br>Logos</h2>
+                    <div class="border js-toRight"><span></span><span></span></div>
+                    <p class="title__lead">Logo Design</p>
+                    <!-- <div class="btn-wrap"><a class="btn" href="https://mens-reile.com/" target="_balnk">Visit site</a></div> -->
+                </div>
+                <div class="image image__reile"></div>
+            </div>
+        </div>
+        <section class="wrapper">
+            {% for project in projects %}
+            <div class="meta" data-emergence="hidden">
+                <div class="meta__back"></div>
+                <div class="content">
+                    {% if project.image %}
+                    <img src="{{project.image}}" alt="{{project.title}}">
+                    {% endif %}
+                </div>
+                <div class="content">
+                    {% if project.video %}
+                    <video width="100%" height="1000" autoplay loop id="vid" muted>
+                        <source src="{{project.video}}" type="video/mp4">
+                        <source src="{{project.video}}" type="video/ogg">
+                    </video>
+                    {% endif %}
+                </div>
+                <div class="text">
+                    <p class="heading-num">{{project.id}}</p>
+                    <div class="text__wrap">
+                        <h2 class="heading" style="font-size: 3rem;">{{project.title}}</h2>
+                        <p class="text__works">
+                            {{project.description|safe}}
+                        </p>
+                    </div>
+                </div>
+
+                <br><br><br>
+                <br>
+                {% endfor %}
+                <br><br><br>
+                <br>
+                <div class="content content--mlarge back-btn-wrap"><a class="back-btn" href="{% url 'home'%}">BACK</a>
+                </div>
+        </section>
+    </div>
+</main>
+
+{% endblock %}
