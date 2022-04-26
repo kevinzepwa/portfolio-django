@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-import django_heroku
+import django_on_heroku
+from dotenv import load_dotenv
+load_dotenv()
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!a5_9(*9odl(hy0&ag*2_hz^@9v%)jnh+uz%z^cl=)y59v@-84'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,9 +84,9 @@ WSGI_APPLICATION = 'kevportfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'zepwaportfolio',
-        'USER': 'postgres',
-        'PASSWORD': 'Emmaculate',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASS'),
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -147,4 +150,4 @@ TINYMCE_DEFAULT_CONFIG = {
     'file_browser_callback': "myFileBrowser"
 }
 
-django_heroku.settings(locals())
+django_on_heroku.settings(locals())
